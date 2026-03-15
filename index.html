@@ -11,60 +11,84 @@
     nav { background: var(--dark); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo { color: var(--orange); font-size: 15px; font-weight: 800; letter-spacing: 2px; }
     nav .tagline { color: #888; font-size: 13px; }
-    .hero { background: var(--dark); padding: 56px 24px 48px; text-align: center; }
+    .hero { background: var(--dark); padding: 48px 24px 40px; text-align: center; }
     .hero .badge { display: inline-block; background: var(--orange); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 20px; }
-    .hero h1 { color: #fff; font-size: clamp(28px, 5vw, 46px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 { color: #fff; font-size: clamp(26px, 5vw, 42px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
     .hero h1 span { color: var(--orange); }
-    .hero p { color: #AAAAAA; font-size: 16px; max-width: 520px; margin: 0 auto; line-height: 1.6; }
-    main { flex: 1; display: flex; justify-content: center; padding: 40px 16px 60px; }
-    .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); width: 100%; max-width: 680px; overflow: hidden; }
-    .card-header { background: var(--orange); padding: 20px 28px; display: flex; align-items: center; gap: 12px; }
-    .card-header .icon { width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .card-header h2 { color: #fff; font-size: 17px; font-weight: 700; }
-    .card-header p { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 2px; }
-    .card-body { padding: 32px 28px; }
-    .gate-intro { background: var(--gray); border-left: 4px solid var(--orange); padding: 16px 20px; border-radius: 0 6px 6px 0; margin-bottom: 28px; }
+    .hero p { color: #AAAAAA; font-size: 15px; max-width: 540px; margin: 0 auto; line-height: 1.6; }
+    main { flex: 1; display: flex; justify-content: center; padding: 36px 16px 60px; }
+    .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); width: 100%; max-width: 720px; overflow: hidden; }
+    .card-header { background: var(--orange); padding: 18px 28px; display: flex; align-items: center; gap: 12px; }
+    .card-header .icon { width: 34px; height: 34px; background: rgba(255,255,255,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 17px; }
+    .card-header h2 { color: #fff; font-size: 16px; font-weight: 700; }
+    .card-header p { color: rgba(255,255,255,0.8); font-size: 12px; margin-top: 2px; }
+    .card-body { padding: 30px 28px; }
+
+    /* Gate */
+    .gate-intro { background: var(--gray); border-left: 4px solid var(--orange); padding: 14px 18px; border-radius: 0 6px 6px 0; margin-bottom: 24px; }
     .gate-intro p { font-size: 14px; color: var(--mid); line-height: 1.6; }
     .gate-intro strong { color: var(--dark); }
     label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
-    input[type="text"], input[type="email"] { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 15px; color: var(--dark); transition: border-color .2s; margin-bottom: 16px; background: #fff; }
+    input[type="text"], input[type="email"] { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 15px; color: var(--dark); transition: border-color .2s; margin-bottom: 14px; background: #fff; }
     input:focus { outline: none; border-color: var(--orange); }
-    .btn { width: 100%; padding: 14px; background: var(--orange); color: #fff; font-size: 15px; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background .2s, transform .1s; margin-top: 4px; }
+    .btn { width: 100%; padding: 13px; background: var(--orange); color: #fff; font-size: 15px; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background .2s, transform .1s; margin-top: 4px; }
     .btn:hover { background: #d44800; }
     .btn:active { transform: scale(0.99); }
     .btn:disabled { background: #ccc; cursor: not-allowed; }
-    .privacy { text-align: center; font-size: 12px; color: #999; margin-top: 12px; }
+    .privacy { text-align: center; font-size: 12px; color: #999; margin-top: 10px; }
+
+    /* Tool */
     #tool { display: none; }
-    .field { margin-bottom: 20px; }
-    .field textarea { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 15px; color: var(--dark); resize: vertical; min-height: 72px; font-family: inherit; transition: border-color .2s; }
+    .field { margin-bottom: 18px; }
+    .field textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 14px; color: var(--dark); resize: vertical; min-height: 80px; font-family: inherit; transition: border-color .2s; line-height: 1.5; }
     .field textarea:focus { outline: none; border-color: var(--orange); }
-    .hint { font-size: 12px; color: #999; margin-top: 5px; }
-    #results { margin-top: 28px; display: none; }
-    .results-label { font-size: 13px; font-weight: 700; color: var(--mid); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
-    .hook-item { background: var(--gray); border-radius: 6px; padding: 16px 18px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; transition: background .15s; }
-    .hook-item:hover { background: #EDECEA; }
-    .hook-type { flex-shrink: 0; background: var(--orange); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px; margin-top: 2px; min-width: 88px; text-align: center; text-transform: uppercase; }
-    .hook-text { font-size: 15px; color: var(--dark); line-height: 1.5; flex: 1; }
-    .copy-btn { flex-shrink: 0; background: none; border: 1.5px solid var(--border); border-radius: 5px; padding: 5px 12px; font-size: 12px; color: var(--mid); cursor: pointer; transition: all .15s; margin-top: 1px; }
-    .copy-btn:hover { border-color: var(--orange); color: var(--orange); }
-    .copy-btn.copied { border-color: #2E7D32; color: #2E7D32; }
-    .loader { text-align: center; padding: 32px 0; display: none; }
-    .spinner { width: 36px; height: 36px; border: 3px solid #eee; border-top-color: var(--orange); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 12px; }
+    .hint { font-size: 12px; color: #999; margin-top: 4px; }
+
+    /* Loader */
+    .loader { text-align: center; padding: 28px 0; display: none; }
+    .spinner { width: 34px; height: 34px; border: 3px solid #eee; border-top-color: var(--orange); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 10px; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loader p { color: var(--mid); font-size: 14px; }
-    .error-box { background: #FFF3F0; border: 1.5px solid #FFCCBC; border-radius: 6px; padding: 14px 18px; font-size: 14px; color: #BF360C; margin-top: 16px; display: none; line-height: 1.5; }
-    .api-section { background: var(--gray); border-radius: 6px; padding: 16px 20px; margin-bottom: 24px; }
-    .api-section .api-label { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-    .api-section .api-hint { font-size: 12px; color: var(--mid); margin-bottom: 10px; line-height: 1.6; }
-    .api-section .api-hint a { color: var(--orange); text-decoration: none; font-weight: 600; }
-    .api-row { display: flex; gap: 8px; }
-    .api-row input { flex: 1; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 14px; margin-bottom: 0; font-family: monospace; }
-    .api-save-btn { padding: 10px 18px; background: var(--dark); color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
-    .api-save-btn:hover { background: #333; }
-    .api-status { font-size: 12px; margin-top: 6px; }
-    .api-status.ok { color: #2E7D32; }
-    .api-status.err { color: #BF360C; }
-    footer { background: var(--dark); padding: 20px 32px; text-align: center; }
+
+    /* Error */
+    .error-box { background: #FFF3F0; border: 1.5px solid #FFCCBC; border-radius: 6px; padding: 12px 16px; font-size: 14px; color: #BF360C; margin-top: 14px; display: none; line-height: 1.5; }
+
+    /* Section divider */
+    .section-label { font-size: 12px; font-weight: 700; color: var(--mid); letter-spacing: 1.5px; text-transform: uppercase; margin: 28px 0 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+    /* Hooks list */
+    #hooks-section { display: none; }
+    .hook-item { background: var(--gray); border-radius: 6px; padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: background .15s; }
+    .hook-item:hover { background: #EDECEA; }
+    .hook-item.selected { background: #FFF0EA; border: 1.5px solid var(--orange); }
+    .hook-type { flex-shrink: 0; background: var(--orange); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 4px 8px; border-radius: 3px; margin-top: 2px; min-width: 84px; text-align: center; text-transform: uppercase; }
+    .hook-text { font-size: 14px; color: var(--dark); line-height: 1.5; flex: 1; }
+    .hook-actions { display: flex; flex-direction: column; gap: 5px; flex-shrink: 0; }
+    .copy-btn { background: none; border: 1.5px solid var(--border); border-radius: 5px; padding: 4px 10px; font-size: 11px; color: var(--mid); cursor: pointer; transition: all .15s; white-space: nowrap; }
+    .copy-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .copy-btn.copied { border-color: #2E7D32; color: #2E7D32; }
+    .use-btn { background: var(--orange); border: none; border-radius: 5px; padding: 4px 10px; font-size: 11px; font-weight: 700; color: #fff; cursor: pointer; transition: background .15s; white-space: nowrap; }
+    .use-btn:hover { background: #d44800; }
+
+    /* Rewrite section */
+    #rewrite-section { display: none; margin-top: 8px; }
+    .selected-hook-box { background: #FFF0EA; border: 1.5px solid var(--orange); border-radius: 6px; padding: 12px 16px; margin-bottom: 18px; }
+    .selected-hook-box .label { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+    .selected-hook-box .hook-preview { font-size: 14px; color: var(--dark); line-height: 1.5; font-style: italic; }
+
+    /* Rewritten output */
+    #output-section { display: none; }
+    .output-box { background: var(--gray); border-radius: 6px; padding: 20px; margin-top: 14px; position: relative; }
+    .output-text { font-size: 14px; color: var(--dark); line-height: 1.8; white-space: pre-wrap; }
+    .output-actions { display: flex; gap: 8px; margin-top: 14px; }
+    .outline-btn { flex: 1; padding: 10px; background: none; border: 1.5px solid var(--border); border-radius: 6px; font-size: 13px; font-weight: 600; color: var(--mid); cursor: pointer; transition: all .15s; }
+    .outline-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .full-copy-btn { flex: 1; padding: 10px; background: var(--dark); border: none; border-radius: 6px; font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; transition: background .15s; }
+    .full-copy-btn:hover { background: #333; }
+    .full-copy-btn.copied { background: #2E7D32; }
+
+    footer { background: var(--dark); padding: 18px 32px; text-align: center; }
     footer p { color: #555; font-size: 13px; }
     footer span { color: var(--orange); font-weight: 700; }
   </style>
@@ -78,8 +102,8 @@
 
   <div class="hero">
     <div class="badge">FREE TOOL</div>
-    <h1>LinkedIn Hook Generator<br/><span>Powered by AI</span></h1>
-    <p>Stop staring at a blank post. Get 10 scroll-stopping LinkedIn hooks in under 10 seconds. Built by The Cult Brand.</p>
+    <h1>LinkedIn Hook Generator<br/><span>+ Post Rewriter</span></h1>
+    <p>Generate 10 scroll-stopping hooks. Pick the best one. Get your full post rewritten to match it. All in under 30 seconds.</p>
   </div>
 
   <main>
@@ -87,16 +111,17 @@
       <div class="card-header">
         <div class="icon">🎯</div>
         <div>
-          <h2>Hook Generator</h2>
-          <p>10 hooks. 5 styles. Ready to post.</p>
+          <h2>Hook Generator + Post Rewriter</h2>
+          <p>Step 1: Generate hooks. Step 2: Pick one. Step 3: Get your full post rewritten.</p>
         </div>
       </div>
 
       <div class="card-body">
 
+        <!-- GATE -->
         <div id="gate">
           <div class="gate-intro">
-            <p><strong>Get instant free access.</strong> Enter your name and email below. Your hooks will be ready in seconds. No spam. No catch. Just the tool.</p>
+            <p><strong>Get instant free access.</strong> Enter your name and email below. No spam. No catch. Just the tool.</p>
           </div>
           <label for="gate-name">First Name</label>
           <input type="text" id="gate-name" placeholder="Your first name" />
@@ -106,44 +131,67 @@
           <p class="privacy">No spam ever. Unsubscribe anytime.</p>
         </div>
 
+        <!-- TOOL -->
         <div id="tool">
-          <div class="api-section">
-            <div class="api-label">🔑 Your Free Groq API Key</div>
-            <div class="api-hint">
-              Get your free key at <a href="https://console.groq.com" target="_blank">console.groq.com</a> → Sign up free with Google → Click "API Keys" → Click "Create API Key" → Copy and paste it below. Takes 2 minutes. Completely free.
-            </div>
-            <div class="api-row">
-              <input type="text" id="api-key-input" placeholder="Paste your Groq API key here" />
-              <button class="api-save-btn" onclick="saveApiKey()">Save Key</button>
-            </div>
-            <div class="api-status" id="api-status"></div>
-          </div>
+
+          <!-- Step 1: Inputs -->
+          <div class="section-label">Step 1: Tell us about your post</div>
 
           <div class="field">
             <label for="niche">Your Niche</label>
-            <textarea id="niche" placeholder="Example: Business coaches who help consultants get to $10K per month"></textarea>
-            <div class="hint">Be specific. The more specific you are the better the hooks.</div>
+            <textarea id="niche" rows="2" placeholder="Example: Business coaches who help consultants get to $10K per month"></textarea>
+            <div class="hint">Be specific. The more specific, the better the hooks.</div>
           </div>
 
           <div class="field">
             <label for="topic">Your Post Topic</label>
-            <textarea id="topic" placeholder="Example: Why most coaches never get clients from LinkedIn even when they post every day"></textarea>
+            <textarea id="topic" rows="2" placeholder="Example: Why most coaches never get clients from LinkedIn even when they post every day"></textarea>
             <div class="hint">What problem, insight, or result do you want to talk about?</div>
+          </div>
+
+          <div class="field">
+            <label for="post">Your Draft Post <span style="font-weight:400;color:#999;">(optional but recommended)</span></label>
+            <textarea id="post" rows="5" placeholder="Paste your existing draft post here. If you do not have one yet, just leave this blank and we will write one from scratch using your topic."></textarea>
+            <div class="hint">The rewriter will keep your core ideas and rewrite the post to match whichever hook you choose.</div>
           </div>
 
           <button class="btn" id="gen-btn" onclick="generateHooks()">Generate My 10 Hooks →</button>
 
           <div class="loader" id="loader">
             <div class="spinner"></div>
-            <p>Writing your hooks...</p>
+            <p id="loader-text">Writing your hooks...</p>
           </div>
 
           <div class="error-box" id="error-box"></div>
 
-          <div id="results">
-            <div class="results-label">Your 10 Hooks</div>
+          <!-- Step 2: Hooks list -->
+          <div id="hooks-section">
+            <div class="section-label">Step 2: Pick a hook you like</div>
             <div id="hooks-list"></div>
           </div>
+
+          <!-- Step 3: Rewrite -->
+          <div id="rewrite-section">
+            <div class="section-label">Step 3: Rewrite your post</div>
+            <div class="selected-hook-box">
+              <div class="label">Selected Hook</div>
+              <div class="hook-preview" id="selected-hook-preview"></div>
+            </div>
+            <button class="btn" id="rewrite-btn" onclick="rewritePost()">Rewrite My Post With This Hook →</button>
+          </div>
+
+          <!-- Output -->
+          <div id="output-section">
+            <div class="section-label">Your Rewritten Post</div>
+            <div class="output-box">
+              <div class="output-text" id="output-text"></div>
+            </div>
+            <div class="output-actions">
+              <button class="outline-btn" onclick="generateHooks()">Start Over</button>
+              <button class="full-copy-btn" id="full-copy-btn" onclick="copyFullPost()">Copy Full Post</button>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -156,17 +204,12 @@
 
   <script>
     const WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL_HERE";
-    let apiKey = "";
+    let selectedHook = "";
+    let currentNiche = "";
+    let currentTopic = "";
+    let currentPost  = "";
 
-    function saveApiKey() {
-      const val = document.getElementById("api-key-input").value.trim();
-      const status = document.getElementById("api-status");
-      if (!val) { status.className = "api-status err"; status.textContent = "Please paste your API key first."; return; }
-      apiKey = val;
-      status.className = "api-status ok";
-      status.textContent = "Key saved. You are ready to generate hooks.";
-    }
-
+    // ── GATE ──────────────────────────────────────────
     function submitGate() {
       const name  = document.getElementById("gate-name").value.trim();
       const email = document.getElementById("gate-email").value.trim();
@@ -184,99 +227,114 @@
       }, 600);
     }
 
+    // ── HELPERS ───────────────────────────────────────
+    function showError(msg) {
+      const box = document.getElementById("error-box");
+      box.textContent = msg;
+      box.style.display = "block";
+    }
+    function hideError() { document.getElementById("error-box").style.display = "none"; }
+    function showLoader(msg) { document.getElementById("loader-text").textContent = msg; document.getElementById("loader").style.display = "block"; }
+    function hideLoader() { document.getElementById("loader").style.display = "none"; }
+
+    // ── GENERATE HOOKS ────────────────────────────────
     async function generateHooks() {
-      const niche    = document.getElementById("niche").value.trim();
-      const topic    = document.getElementById("topic").value.trim();
-      const errorBox = document.getElementById("error-box");
-      const loader   = document.getElementById("loader");
-      const results  = document.getElementById("results");
-      const genBtn   = document.getElementById("gen-btn");
+      hideError();
+      document.getElementById("hooks-section").style.display  = "none";
+      document.getElementById("rewrite-section").style.display = "none";
+      document.getElementById("output-section").style.display  = "none";
 
-      errorBox.style.display = "none";
-      results.style.display  = "none";
+      currentNiche = document.getElementById("niche").value.trim();
+      currentTopic = document.getElementById("topic").value.trim();
+      currentPost  = document.getElementById("post").value.trim();
 
-      if (!apiKey) { errorBox.style.display = "block"; errorBox.textContent = "Please paste your Groq API key and click Save Key before generating."; return; }
-      if (!niche)  { errorBox.style.display = "block"; errorBox.textContent = "Please enter your niche."; return; }
-      if (!topic)  { errorBox.style.display = "block"; errorBox.textContent = "Please enter your post topic."; return; }
+      if (!currentNiche) { showError("Please enter your niche."); return; }
+      if (!currentTopic) { showError("Please enter your post topic."); return; }
 
-      loader.style.display = "block";
-      genBtn.disabled = true;
-      genBtn.textContent = "Generating...";
-
-      const prompt = `You are an expert LinkedIn content strategist.
-
-Niche: ${niche}
-Post Topic: ${topic}
-
-Generate exactly 10 LinkedIn hook variations for this topic. Each hook should be the first line of a LinkedIn post designed to stop the scroll and make people want to read more.
-
-Use these 5 hook types, 2 hooks each:
-1. RESULT - Leads with a specific, tangible outcome or number
-2. CURIOSITY - Teases something surprising or counterintuitive
-3. STORY - Opens a personal or relatable moment
-4. CONTRADICTION - Challenges a common belief in the niche
-5. BOLD CLAIM - Makes a direct, confident statement
-
-Rules:
-- Each hook must be 1 to 2 sentences maximum
-- Each hook must be specific to the niche and topic provided
-- No fluff, no generic advice, no filler words
-- Write in plain human language, not corporate speak
-- Do not use em dashes
-
-Return your response as a JSON array only. No explanation. No preamble. No markdown code fences. Just raw JSON like this:
-[
-  {"type": "RESULT", "hook": "Your hook text here"},
-  {"type": "CURIOSITY", "hook": "Your hook text here"}
-]`;
+      const btn = document.getElementById("gen-btn");
+      btn.disabled = true;
+      btn.textContent = "Generating...";
+      showLoader("Writing your 10 hooks...");
 
       try {
-        const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${apiKey}` },
-          body: JSON.stringify({ model: "llama-3.1-8b-instant", messages: [{ role: "user", content: prompt }], temperature: 0.9, max_tokens: 1200 })
-        });
-
-        if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err.error?.message || "API error. Check your key and try again.");
-        }
-
-        const data    = await res.json();
-        const raw     = data.choices?.[0]?.message?.content || "";
-        const cleaned = raw.replace(/```json|```/g, "").trim();
-        const hooks   = JSON.parse(cleaned);
-        renderHooks(hooks);
-
+        const res  = await fetch("/api/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "hooks", niche: currentNiche, topic: currentTopic }) });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Something went wrong.");
+        renderHooks(data.hooks);
       } catch (err) {
-        errorBox.style.display = "block";
-        if (err.message.includes("401") || err.message.includes("invalid_api_key")) {
-          errorBox.textContent = "Your API key looks incorrect. Go to console.groq.com, create a new key, and paste it above.";
-        } else if (err.message.includes("JSON")) {
-          errorBox.textContent = "Something went wrong with the response format. Click Generate again and it will work.";
-        } else {
-          errorBox.textContent = "Error: " + err.message;
-        }
+        showError("Error: " + err.message);
       } finally {
-        loader.style.display = "none";
-        genBtn.disabled = false;
-        genBtn.textContent = "Generate My 10 Hooks →";
+        hideLoader();
+        btn.disabled = false;
+        btn.textContent = "Generate My 10 Hooks →";
       }
     }
 
+    // ── RENDER HOOKS ──────────────────────────────────
     function renderHooks(hooks) {
       const list = document.getElementById("hooks-list");
       list.innerHTML = "";
       hooks.forEach((h, i) => {
         const item = document.createElement("div");
         item.className = "hook-item";
-        item.innerHTML = `<div class="hook-type">${h.type}</div><div class="hook-text">${h.hook}</div><button class="copy-btn" onclick="copyHook(this, ${i})">Copy</button>`;
+        item.id = `hook-${i}`;
+        item.innerHTML = `
+          <div class="hook-type">${h.type}</div>
+          <div class="hook-text">${h.hook}</div>
+          <div class="hook-actions">
+            <button class="copy-btn" onclick="copyHook(this, ${i})">Copy</button>
+            <button class="use-btn" onclick="selectHook(${i}, \`${h.hook.replace(/`/g, "'")}\`)">Use This</button>
+          </div>
+        `;
         list.appendChild(item);
       });
-      document.getElementById("results").style.display = "block";
-      document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("hooks-section").style.display = "block";
+      document.getElementById("hooks-section").scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
+    // ── SELECT HOOK ───────────────────────────────────
+    function selectHook(index, hook) {
+      // Clear previous selection
+      document.querySelectorAll(".hook-item").forEach(el => el.classList.remove("selected"));
+      document.getElementById(`hook-${index}`).classList.add("selected");
+
+      selectedHook = hook;
+      document.getElementById("selected-hook-preview").textContent = hook;
+      document.getElementById("rewrite-section").style.display = "block";
+      document.getElementById("output-section").style.display  = "none";
+      document.getElementById("rewrite-section").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // ── REWRITE POST ──────────────────────────────────
+    async function rewritePost() {
+      if (!selectedHook) { showError("Please select a hook first."); return; }
+      hideError();
+
+      const btn = document.getElementById("rewrite-btn");
+      btn.disabled = true;
+      btn.textContent = "Rewriting your post...";
+      showLoader("Rewriting your post to match the hook...");
+
+      // If no draft post, use topic as the base
+      const postToRewrite = currentPost || `Write a LinkedIn post about this topic: ${currentTopic}. The audience is: ${currentNiche}.`;
+
+      try {
+        const res  = await fetch("/api/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "rewrite", post: postToRewrite, hook: selectedHook }) });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Something went wrong.");
+        document.getElementById("output-text").textContent = data.rewritten;
+        document.getElementById("output-section").style.display = "block";
+        document.getElementById("output-section").scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (err) {
+        showError("Error: " + err.message);
+      } finally {
+        hideLoader();
+        btn.disabled = false;
+        btn.textContent = "Rewrite My Post With This Hook →";
+      }
+    }
+
+    // ── COPY FUNCTIONS ────────────────────────────────
     function copyHook(btn, index) {
       const text = document.querySelectorAll(".hook-text")[index].textContent;
       navigator.clipboard.writeText(text).then(() => {
@@ -286,6 +344,17 @@ Return your response as a JSON array only. No explanation. No preamble. No markd
       });
     }
 
+    function copyFullPost() {
+      const text = document.getElementById("output-text").textContent;
+      const btn  = document.getElementById("full-copy-btn");
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = "Copy Full Post"; btn.classList.remove("copied"); }, 2000);
+      });
+    }
+
+    // Enter key on gate
     document.addEventListener("keydown", function(e) {
       if (e.key === "Enter") {
         const gate = document.getElementById("gate");
