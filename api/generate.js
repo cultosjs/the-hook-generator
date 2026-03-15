@@ -20,21 +20,25 @@ export default async function handler(req, res) {
 Niche: ${niche}
 Post Topic: ${topic}
 
-Generate exactly 10 LinkedIn hook variations for this topic. Each hook should be the first line of a LinkedIn post designed to stop the scroll and make people want to read more.
+Generate exactly 14 LinkedIn hook variations for this topic. Each hook should be the first line of a LinkedIn post designed to stop the scroll and make people want to read more.
 
-Use these 5 hook types, 2 hooks each:
+Use these 7 hook types, 2 hooks each:
 1. RESULT - Leads with a specific, tangible outcome or number
 2. CURIOSITY - Teases something surprising or counterintuitive
 3. STORY - Opens a personal or relatable moment
 4. CONTRADICTION - Challenges a common belief in the niche
 5. BOLD CLAIM - Makes a direct, confident statement
+6. EDUCATIONAL - Teaches one sharp insight or lesson in one sentence that makes the reader think
+7. HOW TO - Promises a clear step by step method or a specific skill the reader will learn
 
 Rules:
 - Each hook must be 1 to 2 sentences maximum
 - Each hook must be specific to the niche and topic provided
 - No fluff, no generic advice, no filler words
-- Write in plain human language, not corporate speak
+- Write in plain human language that anyone can understand
 - Do not use em dashes
+- How To hooks must start with the words "How to"
+- Educational hooks must lead with a sharp insight or fact, not a question
 
 Return your response as a JSON array only. No explanation. No preamble. No markdown code fences. Just raw JSON like this:
 [
@@ -67,6 +71,7 @@ Rules:
 - Leave a blank line between every paragraph
 
 Return only the rewritten post as plain text. No explanation. No preamble. No labels.`;
+
   } else {
     return res.status(400).json({ error: "Invalid action." });
   }
@@ -82,7 +87,7 @@ Return only the rewritten post as plain text. No explanation. No preamble. No la
         model: "llama-3.1-8b-instant",
         messages: [{ role: "user", content: prompt }],
         temperature: 0.9,
-        max_tokens: 1500
+        max_tokens: 1800
       })
     });
 
