@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Hook Generator | The Cult Brand</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8530A;
+      --dark:   #1A1A1A;
+      --gray:   #F5F5F5;
+      --mid:    #6B6B6B;
+      --border: #E0E0E0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #F7F7F7;
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--dark);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .logo { color: var(--orange); font-size: 15px; font-weight: 800; letter-spacing: 2px; }
+    nav .tagline { color: #888; font-size: 13px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero p {
+      color: #AAAAAA;
+      font-size: 16px;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── MAIN CARD ── */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px 60px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 680px;
+      overflow: hidden;
+    }
+    .card-header {
+      background: var(--orange);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .card-header .icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .card-header h2 { color: #fff; font-size: 17px; font-weight: 700; }
+    .card-header p  { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 2px; }
+    .card-body { padding: 32px 28px; }
+
+    /* ── GATE SCREEN ── */
+    #gate { }
+    .gate-intro {
+      background: var(--gray);
+      border-left: 4px solid var(--orange);
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 28px;
+    }
+    .gate-intro p { font-size: 14px; color: var(--mid); line-height: 1.6; }
+    .gate-intro strong { color: var(--dark); }
+
+    label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 15px;
+      color: var(--dark);
+      transition: border-color .2s;
+      margin-bottom: 16px;
+      background: #fff;
+    }
+    input:focus { outline: none; border-color: var(--orange); }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      margin-top: 4px;
+    }
+    .btn:hover  { background: #d44800; }
+    .btn:active { transform: scale(0.99); }
+    .btn:disabled { background: #ccc; cursor: not-allowed; }
+
+    .privacy { text-align: center; font-size: 12px; color: #999; margin-top: 12px; }
+
+    /* ── TOOL SCREEN ── */
+    #tool { display: none; }
+    .field { margin-bottom: 20px; }
+    .field textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 15px;
+      color: var(--dark);
+      resize: vertical;
+      min-height: 72px;
+      font-family: inherit;
+      transition: border-color .2s;
+    }
+    .field textarea:focus { outline: none; border-color: var(--orange); }
+
+    .hint { font-size: 12px; color: #999; margin-top: 5px; }
+
+    /* ── RESULTS ── */
+    #results { margin-top: 28px; display: none; }
+    .results-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mid);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hook-item {
+      background: var(--gray);
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: background .15s;
+    }
+    .hook-item:hover { background: #EDECEA; }
+    .hook-type {
+      flex-shrink: 0;
+      background: var(--orange);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      margin-top: 2px;
+      min-width: 88px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .hook-text { font-size: 15px; color: var(--dark); line-height: 1.5; flex: 1; }
+    .copy-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: var(--mid);
+      cursor: pointer;
+      transition: all .15s;
+      margin-top: 1px;
+    }
+    .copy-btn:hover  { border-color: var(--orange); color: var(--orange); }
+    .copy-btn.copied { border-color: #2E7D32; color: #2E7D32; }
+
+    /* ── LOADING ── */
+    .loader {
+      text-align: center;
+      padding: 32px 0;
+      display: none;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #eee;
+      border-top-color: var(--orange);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader p { color: var(--mid); font-size: 14px; }
+
+    /* ── ERROR ── */
+    .error-box {
+      background: #FFF3F0;
+      border: 1.5px solid #FFCCBC;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #BF360C;
+      margin-top: 16px;
+      display: none;
+    }
+
+    /* ── API KEY INPUT ── */
+    .api-section {
+      background: var(--gray);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .api-section .api-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .api-section .api-hint {
+      font-size: 12px;
+      color: var(--mid);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .api-section .api-hint a { color: var(--orange); text-decoration: none; font-weight: 600; }
+    .api-row { display: flex; gap: 8px; }
+    .api-row input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 0;
+      font-family: monospace;
+    }
+    .api-save-btn {
+      padding: 10px 18px;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .api-save-btn:hover { background: #333; }
+    .api-status { font-size: 12px; margin-top: 6px; }
+    .api-status.ok  { color: #2E7D32; }
+    .api-status.err { color: #BF360C; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 20px 32px;
+      text-align: center;
+    }
+    footer p { color: #555; font-size: 13px; }
+    footer span { color: var(--orange); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">THE CULT BRAND</div>
+    <div class="tagline">Free Tool</div>
+  </nav>
+
+  <div class="hero">
+    <div class="badge">FREE TOOL</div>
+    <h1>LinkedIn Hook Generator<br/><span>Powered by AI</span></h1>
+    <p>Stop staring at a blank post. Get 10 scroll-stopping LinkedIn hooks in under 10 seconds. Built by The Cult Brand.</p>
+  </div>
+
+  <main>
+    <div class="card">
+
+      <div class="card-header">
+        <div class="icon">🎯</div>
+        <div>
+          <h2>Hook Generator</h2>
+          <p>10 hooks. 5 styles. Ready to post.</p>
+        </div>
+      </div>
+
+      <div class="card-body">
+
+        <!-- GATE SCREEN -->
+        <div id="gate">
+          <div class="gate-intro">
+            <p><strong>Get instant free access.</strong> Enter your name and email below. Your hooks will be ready in seconds. No spam. No catch. Just the tool.</p>
+          </div>
+
+          <label for="gate-name">First Name</label>
+          <input type="text" id="gate-name" placeholder="Your first name" />
+
+          <label for="gate-email">Email Address</label>
+          <input type="email" id="gate-email" placeholder="you@email.com" />
+
+          <button class="btn" id="gate-btn" onclick="submitGate()">Get Free Access →</button>
+          <p class="privacy">No spam ever. Unsubscribe anytime.</p>
+        </div>
+
+        <!-- TOOL SCREEN -->
+        <div id="tool">
+
+          <!-- API Key Section -->
+          <div class="api-section">
+            <div class="api-label">🔑 Your Free Gemini API Key</div>
+            <div class="api-hint">
+              Get your free key at <a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a> → Sign in with Google → Click "Get API Key". It takes 2 minutes and costs nothing.
+            </div>
+            <div class="api-row">
+              <input type="text" id="api-key-input" placeholder="Paste your Gemini API key here" />
+              <button class="api-save-btn" onclick="saveApiKey()">Save Key</button>
+            </div>
+            <div class="api-status" id="api-status"></div>
+          </div>
+
+          <!-- Generator Fields -->
+          <div class="field">
+            <label for="niche">Your Niche</label>
+            <textarea id="niche" placeholder="Example: Business coaches who help consultants get to $10K/month"></textarea>
+            <div class="hint">Be specific. The more specific you are the better the hooks.</div>
+          </div>
+
+          <div class="field">
+            <label for="topic">Your Post Topic</label>
+            <textarea id="topic" placeholder="Example: Why most coaches never get clients from LinkedIn even when they post every day"></textarea>
+            <div class="hint">What problem, insight, or result do you want to talk about?</div>
+          </div>
+
+          <button class="btn" id="gen-btn" onclick="generateHooks()">Generate My 10 Hooks →</button>
+
+          <!-- Loading -->
+          <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Writing your hooks...</p>
+          </div>
+
+          <!-- Error -->
+          <div class="error-box" id="error-box"></div>
+
+          <!-- Results -->
+          <div id="results">
+            <div class="results-label">Your 10 Hooks</div>
+            <div id="hooks-list"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Built by <span>The Cult Brand</span> · thecultbrand.com · Free forever</p>
+  </footer>
+
+  <script>
+    // ── CONFIG ─────────────────────────────────────────────────────────────────
+    // Replace this with your real Make.com or Zapier webhook URL
+    // to capture emails into your Beehiiv newsletter automatically.
+    // If you leave it blank the tool still works, you just won't capture emails.
+    const WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL_HERE";
+
+    // ── STATE ──────────────────────────────────────────────────────────────────
+    let apiKey = "";
+
+    function saveApiKey() {
+      const val = document.getElementById("api-key-input").value.trim();
+      const status = document.getElementById("api-status");
+      if (!val) {
+        status.className = "api-status err";
+        status.textContent = "Please paste your API key first.";
+        return;
+      }
+      apiKey = val;
+      status.className = "api-status ok";
+      status.textContent = "Key saved. You are ready to generate hooks.";
+    }
+
+    // ── GATE ───────────────────────────────────────────────────────────────────
+    function submitGate() {
+      const name  = document.getElementById("gate-name").value.trim();
+      const email = document.getElementById("gate-email").value.trim();
+      const btn   = document.getElementById("gate-btn");
+
+      if (!name) { alert("Please enter your first name."); return; }
+      if (!email || !email.includes("@")) { alert("Please enter a valid email address."); return; }
+
+      btn.disabled = true;
+      btn.textContent = "Getting your access...";
+
+      // Send to your Make.com webhook (optional)
+      if (WEBHOOK_URL && WEBHOOK_URL !== "YOUR_MAKE_WEBHOOK_URL_HERE") {
+        fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, source: "hook-generator", date: new Date().toISOString() })
+        }).catch(() => {}); // Fail silently — tool still opens
+      }
+
+      // Show the tool
+      setTimeout(() => {
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("tool").style.display = "block";
+      }, 600);
+    }
+
+    // ── GENERATE ───────────────────────────────────────────────────────────────
+    async function generateHooks() {
+      const niche = document.getElementById("niche").value.trim();
+      const topic = document.getElementById("topic").value.trim();
+      const errorBox = document.getElementById("error-box");
+      const loader  = document.getElementById("loader");
+      const results = document.getElementById("results");
+      const genBtn  = document.getElementById("gen-btn");
+
+      errorBox.style.display = "none";
+      results.style.display  = "none";
+
+      if (!apiKey) {
+        errorBox.style.display = "block";
+        errorBox.textContent = "Please save your Gemini API key above before generating.";
+        return;
+      }
+      if (!niche) { errorBox.style.display="block"; errorBox.textContent="Please enter your niche."; return; }
+      if (!topic) { errorBox.style.display="block"; errorBox.textContent="Please enter your post topic."; return; }
+
+      loader.style.display = "block";
+      genBtn.disabled = true;
+      genBtn.textContent = "Generating...";
+
+      const prompt = `You are an expert LinkedIn content strategist.
+
+Niche: ${niche}
+Post Topic: ${topic}
+
+Generate exactly 10 LinkedIn hook variations for this topic. Each hook should be the first line of a LinkedIn post — designed to stop the scroll and make people want to read more.
+
+Use these 5 hook types, 2 hooks each:
+1. RESULT — Leads with a specific, tangible outcome or number
+2. CURIOSITY — Teases something surprising or counterintuitive
+3. STORY — Opens a personal or relatable moment
+4. CONTRADICTION — Challenges a common belief in the niche
+5. BOLD CLAIM — Makes a direct, confident statement
+
+Rules:
+- Each hook must be 1 to 2 sentences maximum
+- Each hook must be specific to the niche and topic provided
+- No fluff, no generic advice, no filler words
+- Write in plain human language, not corporate speak
+- Do not use em dashes
+
+Return your response as a JSON array only. No explanation. No preamble. No markdown. Just raw JSON like this:
+[
+  {"type": "RESULT", "hook": "Your hook text here"},
+  {"type": "CURIOSITY", "hook": "Your hook text here"}
+]`;
+
+      try {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: { temperature: 0.9, maxOutputTokens: 1200 }
+            })
+          }
+        );
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error?.message || "API error. Check your key and try again.");
+        }
+
+        const data = await res.json();
+        const raw  = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+
+        // Strip any markdown code fences if present
+        const cleaned = raw.replace(/```json|```/g, "").trim();
+        const hooks = JSON.parse(cleaned);
+
+        renderHooks(hooks);
+
+      } catch (err) {
+        errorBox.style.display = "block";
+        if (err.message.includes("API_KEY_INVALID") || err.message.includes("400")) {
+          errorBox.textContent = "Your API key looks incorrect. Go to aistudio.google.com, copy your key again, and paste it above.";
+        } else if (err.message.includes("JSON")) {
+          errorBox.textContent = "Something went wrong with the response format. Try generating again.";
+        } else {
+          errorBox.textContent = "Error: " + err.message;
+        }
+      } finally {
+        loader.style.display = "none";
+        genBtn.disabled = false;
+        genBtn.textContent = "Generate My 10 Hooks →";
+      }
+    }
+
+    // ── RENDER ─────────────────────────────────────────────────────────────────
+    function renderHooks(hooks) {
+      const list = document.getElementById("hooks-list");
+      list.innerHTML = "";
+
+      hooks.forEach((h, i) => {
+        const item = document.createElement("div");
+        item.className = "hook-item";
+        item.innerHTML = `
+          <div class="hook-type">${h.type}</div>
+          <div class="hook-text">${h.hook}</div>
+          <button class="copy-btn" onclick="copyHook(this, ${i})">Copy</button>
+        `;
+        list.appendChild(item);
+      });
+
+      document.getElementById("results").style.display = "block";
+      document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // ── COPY ───────────────────────────────────────────────────────────────────
+    function copyHook(btn, index) {
+      const items = document.querySelectorAll(".hook-text");
+      const text  = items[index].textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          btn.textContent = "Copy";
+          btn.classList.remove("copied");
+        }, 2000);
+      });
+    }
+
+    // Allow Enter key to submit gate
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const gate = document.getElementById("gate");
+        if (gate.style.display !== "none" && gate.offsetParent !== null) {
+          submitGate();
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
